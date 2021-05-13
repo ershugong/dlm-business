@@ -49,3 +49,5 @@ secure:
       - /admin/info
       - /admin/logout
       - /test/**
+      - /testUser/**
+      - /testBook/**

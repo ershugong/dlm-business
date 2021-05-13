@@ -1,6 +1,8 @@
 package ${package.Controller};
 
 import com.macro.mall.tiny.common.api.CommonResult;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ${package.Service}.${table.serviceName};
@@ -81,12 +83,22 @@ public class ${table.controllerName} {
     }
 
 
-    @RequestMapping(value = "/listAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/listAll", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult<List<${entity}>> listAll() {
         List<${entity}> ${table.entityPath}List = ${table.entityPath}Service.list();
         return CommonResult.success(${table.entityPath}List);
     }
+
+    @RequestMapping(value = "/listByPage", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult<Page<${entity}>> listByPage(@RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
+                                                    @RequestParam(value = "pageIndex",defaultValue = "1") Integer pageIndex) {
+        Page<${entity}> page = new Page<>(pageIndex,pageSize);
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        Page<${entity}> pageResult = ${table.entityPath}Service.page(page, queryWrapper);
+        return CommonResult.success(pageResult);
+        }
 }
 
 #end
