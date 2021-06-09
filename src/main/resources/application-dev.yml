@@ -4,10 +4,10 @@ spring:
     username: lubao
     password: 84952139
   redis:
-    host: localhost # Redis服务器地址
+    host: 123.207.88.92 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
-    password: # Redis服务器连接密码（默认为空）
+    password: 84952139 # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
 
   #当个文件大小   每次请求的大小
@@ -26,7 +26,7 @@ interceptorLoginPath: http://localhost:8081/duolaimei/login.html
 
 logging:
   level:
-    root: info
+    root: error
     com.macro.mall: debug
   file:
     path: D:\other_file\localFile\logs\dlmLogs

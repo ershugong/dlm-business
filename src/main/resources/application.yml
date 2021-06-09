@@ -51,3 +51,4 @@ secure:
       - /test/**
       - /testUser/**
       - /testBook/**
+      - /wxLittle/**

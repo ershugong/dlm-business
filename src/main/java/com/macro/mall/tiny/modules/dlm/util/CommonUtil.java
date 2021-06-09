@@ -7,9 +7,9 @@ import org.springframework.web.multipart.MultipartFile;
 import sun.misc.BASE64Decoder;
 
 import java.io.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.UUID;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.*;
 
 public class CommonUtil {
     //获取32位随机数
@@ -131,5 +131,43 @@ public class CommonUtil {
 
         return fileName;
 
+    }
+
+    //发送Get请求
+    public static String GET(String url) {
+        String result = "";
+        BufferedReader in = null;
+        InputStream is = null;
+        InputStreamReader isr = null;
+        try {
+            URL realUrl = new URL(url);
+            URLConnection conn = realUrl.openConnection();
+            conn.connect();
+            Map<String, List<String>> map = conn.getHeaderFields();
+            is = conn.getInputStream();
+            isr = new InputStreamReader(is);
+            in = new BufferedReader(isr);
+            String line;
+            while ((line = in.readLine()) != null) {
+                result += line;
+            }
+        } catch (Exception e) {
+            // 异常记录
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+                if (is != null) {
+                    is.close();
+                }
+                if (isr != null) {
+                    isr.close();
+                }
+            } catch (Exception e2) {
+                // 异常记录
+            }
+        }
+        return result;
     }
 }

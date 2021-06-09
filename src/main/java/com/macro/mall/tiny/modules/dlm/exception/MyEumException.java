@@ -23,6 +23,7 @@ public enum MyEumException implements IErrorCode {
     CLASSIFY_JSON_FORMAT_FAILURE(8013,"分类列表json格式有误"),
     PIC_PLAY_JSON_FORMAT_FAILURE(8014,"轮播图列表json格式有误"),
     USER_LOGIN_FAILURE(8015,"登录失败，账号或密码错误"),
+    WX_LITTLE_ERROR(8016,"微信小程序授权失败"),
     GOODS_NUM_NOT_ENOUGH(8003,"当前货物「%s」,库存不足");
 
     private long code;
