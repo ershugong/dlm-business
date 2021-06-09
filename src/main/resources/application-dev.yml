@@ -10,7 +10,23 @@ spring:
     password: # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
 
+  #当个文件大小   每次请求的大小
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+uploadFilePath: D:\other_file\localFile\logs\test
+uploadFileExcel: D:\other_file\localFile\logs\excel
+
+wxAppId: wx54243273666f8864
+wxAppSecret: 5e40590bebce53cdafdb8a008b89fe46
+
+interceptorLoginPath: http://localhost:8081/duolaimei/login.html
+
 logging:
   level:
     root: info
     com.macro.mall: debug
+  file:
+    path: D:\other_file\localFile\logs\dlmLogs

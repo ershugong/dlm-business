@@ -38,6 +38,13 @@ public class CommonResult<T> {
     }
 
     /**
+     * 失败返回结果(自定义)
+     */
+    public static <T> CommonResult<T> failed(long code,String message) {
+        return new CommonResult<T>(code, message, null);
+    }
+
+    /**
      * 失败返回结果
      * @param errorCode 错误码
      */
